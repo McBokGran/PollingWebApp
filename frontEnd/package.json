@@ -1,0 +1,40 @@
+{
+  "name": "polling-app-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.2.2",
+    "chart.js": "^3.6.2",
+    "cypress-localstorage-commands": "^1.6.1",
+    "highcharts": "^9.3.2",
+    "highcharts-react-official": "^3.1.0",
+    "jspdf": "^2.4.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-pdf": "^5.5.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.5",
+    "react-to-print": "^2.14.1",
+    "recharts": "^2.1.6"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject",
+    "open": "cypress open",
+    "chrome": "cypress run --browser chrome --headless"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.5",
+    "cypress": "^9.2.0",
+    "react-app-rewire-less": "^2.1.0",
+    "react-app-rewired": "^1.4.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

@@ -1,0 +1,20 @@
+module.exports = {
+  signupLink: 'a[href="/signup"]',
+  fullName: 'input[name="name"]',
+  userName: 'input[name="username"]',
+  email: 'input[name="email"]',
+  password: 'input[name="password"]',
+  submitBtn: 'button[type="submit"]',
+  usernameOrEmail: 'input[name="usernameOrEmail"]',
+  toaster: '.ant-notification-notice-description',
+  pollContent: 'div.poll-content',
+  profileIcon: 'li.ant-menu-item.profile-menu',
+  profileDnD: 'a[href="/users/####"]',
+  antTab: 'div.ant-tabs-nav.ant-tabs-nav-animated > div[role="tab"]',
+  createNewPoll: 'a[href="/poll/new"]',
+  question: 'textarea[name="question"]',
+  choice1: 'input[placeholder="Choice 1"]',
+  choice2: 'input[placeholder="Choice 2"]',
+  choice3: 'input[placeholder="Choice 3"]',
+  logoutBtn: 'li.ant-dropdown-menu-item.dropdown-item'
+}

@@ -1,0 +1,64 @@
+
+build:
+  script:
+    - cd BackEnd
+    - ./gradlew build
+    
+
+
+backend-deploy:
+  image: docker:latest
+  stage: deploy     
+  services:
+    - docker:dind
+  before_script:    
+    - docker login -u "supermclovin" -p "seba1998!" docker.io
+  script:
+    - cd BackEnd
+    - ./gradlew build
+    - docker build --pull -t  index.docker.io/supermclovin/testingpoll .
+    - docker push index.docker.io/supermclovin/testingpoll
+    
+
+
+
+sonarqube-check:
+  image: gradle:jre11-slim
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script: 
+    - cd BackEnd
+    - gradle sonarqube -Dsonar.qualitygate.wait=true
+  allow_failure: true
+  only:
+    - merge_requests
+    - master
+    - develop
+    
+frontEnd-test:
+  image: cypress/base:10
+  stage: test
+  script:
+      - cd frontEnd
+      - npm install
+      - npm run chrome 
+    
+frontend-deploy:
+  image: docker:latest
+  stage: deploy     
+  services:
+    - docker:dind
+  before_script:    
+    - docker login -u "supermclovin" -p "seba1998!" docker.io
+  script:
+    - cd frontEnd 
+    - docker build --pull -t index.docker.io/supermclovin/reactapp .
+    - docker push index.docker.io/supermclovin/reactapp
+
+after_script:
+  - echo "End CI"
